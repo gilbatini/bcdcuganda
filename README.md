@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# bcdcuganda.org
 
-## Getting Started
+Website for Bufulu Community Development Center (BCDC), Nkumba Bufulu, Uganda.
+Rebuilt in Next.js from the old PHP site on cPanel.
 
-First, run the development server:
+## Stack
+
+Next.js 16 (App Router, TypeScript strict), Tailwind CSS v4, Rubik (self-hosted via Fontsource). Hosted on Vercel.
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/lib/site.ts` — contact details, addresses, programs and other shared copy
+- `src/lib/staff.ts` — staff names, roles and photos
+- `src/images/` — photos (optimised by `next/image`)
+- `public/media/` — homepage background video and its poster frame
+- `next.config.ts` — redirects from the old `.php` URLs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contact form
 
-## Learn More
+The contact and support forms send email through [Resend](https://resend.com). Set these in Vercel:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Variable | Purpose |
+| --- | --- |
+| `RESEND_API_KEY` | Required. Without it the form tells visitors to email info@bcdcuganda.org instead. |
+| `CONTACT_TO_EMAIL` | Optional. Defaults to info@bcdcuganda.org. |
+| `CONTACT_FROM_EMAIL` | Optional. Must be on a domain verified in Resend. Defaults to `website@bcdcuganda.org`. |
